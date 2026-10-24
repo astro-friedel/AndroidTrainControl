@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#AB5EF9</color>
+    <color name="colorPrimaryDark">@color/blue_700</color>
+    <color name="colorAccent">#C4105B</color>
+
+    <color name="background">#2E2E2E</color>
+    <color name="darkBackground">#060C05</color>
+    <color name="text">#AB5EF9</color>
+    <color name="infotext">#AB5EF9</color>
+
+    <color name="readoutColor">#E07800</color>
+    <color name="panelBackground">#353535</color>
+    <color name="lineSeparator">#653695</color>
+    <color name="buttonTextColor">#512C82</color>
+    <color name="buttonBackground">#DF9D47</color>
+
+    <color name="colorTableHeader">@color/grey_400</color>
+    <color name="colorClicked">#9F5500</color>
+
+    <!-- Bars like topbar and bottomnavigationview-->
+    <color name="bars_background">@color/colorPrimary</color>
+    <color name="bars_unselected">#AB5EF9</color>
+    <color name="bars_selected">@color/blue_700</color>
+</resources>

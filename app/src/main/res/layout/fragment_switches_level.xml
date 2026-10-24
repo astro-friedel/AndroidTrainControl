@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_switches_level.xml
+    ============================
+    Layout for one track-level tab in the Switches screen.
+
+    ┌─────────────────────────┬────────────┐
+    │                         │            │
+    │   WebView (SVG map)     │  Control   │
+    │       weight=2          │   panel    │
+    │                         │  weight=1  │
+    │                         │            │
+    └─────────────────────────┴────────────┘
+
+    Left 2/3  — WebView displaying the SVG track map for this level.
+                JavaScript bridge handles path tap detection and color updates.
+
+    Right 1/3 — FrameLayout, empty by default.
+                SwitchesLevelFragment replaces this with a SwitchControlFragment
+                when a rect_ path is tapped, and clears it on second tap.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <!-- SVG map — left 2/3 -->
+    <WebView
+        android:id="@+id/webview_switch_map"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/lineSeparator" />
+
+    <!-- Switch control panel — right 1/3 -->
+    <FrameLayout
+        android:id="@+id/switch_control_panel"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- STOP button — dark red resting, brighter red when pressed -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#A00000"/>
+            <stroke android:width="2dp" android:color="#BF1616"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#5C0000"/>
+            <stroke android:width="2dp" android:color="#BF1616"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+
+</selector>

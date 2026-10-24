@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Shared attribute for all three switch diagram views.
+         switchThrown=false → straight route active (green)
+         switchThrown=true  → diverging route active (yellow) -->
+    <declare-styleable name="SwitchDiagramView">
+        <attr name="switchThrown" format="boolean" />
+    </declare-styleable>
+
+    <!-- Additional attribute for SwitchSingleView only.
+         divergeRight=false → diverging branch exits upper-left (default)
+         divergeRight=true  → diverging branch exits upper-right -->
+    <declare-styleable name="SwitchSingleView">
+        <attr name="switchThrown" />
+        <attr name="divergeRight" format="boolean" />
+    </declare-styleable>
+
+    <!-- SwitchPairView and SwitchYView only need switchThrown -->
+    <declare-styleable name="SwitchPairView">
+        <attr name="switchThrown" />
+    </declare-styleable>
+
+    <declare-styleable name="SwitchYView">
+        <attr name="switchThrown" />
+    </declare-styleable>
+
+</resources>

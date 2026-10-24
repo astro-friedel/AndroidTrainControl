@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_switch_single.xml
+    ===========================
+    Diagram for a single normal turnout oriented vertically.
+    Use fragment_switch_single_right.xml for the right-diverging mirror.
+
+    Track geometry (train travels UPWARD):
+    ───────────────────────────────────────
+         ╲  ┃   ← two exits at top: diverging (left) and straight
+          ╲ ┃
+           ╲┃   ← frog / point (mid-height)
+            ┃
+            ┃   ← single approach track (bottom, both rails)
+
+    Rail conventions (gauge = 20dp between rail centres):
+      • Approach:   single track, centred, enters from bottom.
+      • Straight:   same pair of rails continues vertically upward  → GREEN
+      • Diverging:  exits upper-left; both rails are parallel to each
+                    other (20dp perpendicular spacing preserved).    → YELLOW (dim)
+
+    Coordinate sketch (canvas units, view h=120dp assumed):
+      Approach rails   x = [railL, railR],  y = bottom → frogY
+      Straight rails   x = [railL, railR],  y = frogY  → top
+      Diverging inner  (railL, frogY) → (railL - dx, top)
+      Diverging outer  offset 20dp perpendicular to diverging direction
+
+    Implementation:
+    • SwitchSingleView reads app:switchThrown and app:divergeRight.
+      switchThrown=false → straight active (green), diverging dim (yellow).
+      switchThrown=true  → diverging active (yellow), straight dim (green).
+      divergeRight=false → diverging exits upper-LEFT  (default).
+      divergeRight=true  → diverging exits upper-RIGHT (mirror image).
+    • Alternatively swap two VectorDrawables in an ImageView.
+
+    Attributes exposed on SwitchSingleView
+    ────────────────────────────────────────
+    app:switchThrown="false"    → straight (green highlight)
+    app:switchThrown="true"     → diverging (yellow highlight)
+    app:divergeRight="false"    → diverges left (default)
+    app:divergeRight="true"     → diverges right
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+        Option A – custom canvas View (recommended).
+        Replace the package path with your own.
+        Set divergeRight="true" on the right-hand variant of this fragment.
+    -->
+    <com.controls.train.app.switches.view.SwitchSingleView
+        android:id="@+id/view_switch_single"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/single_switch_diagram"
+        app:switchThrown="false"
+        app:divergeRight="false" />
+
+    <!--
+        Option B – static vector art swap (simpler if you have no custom View).
+        Supply four drawables:
+          ic_switch_single_left_straight.xml
+          ic_switch_single_left_diverging.xml
+          ic_switch_single_right_straight.xml
+          ic_switch_single_right_diverging.xml
+        Swap src in Java based on switchThrown + divergeRight state.
+        Uncomment and delete Option A if you go this route.
+
+    <ImageView
+        android:id="@+id/img_switch_single"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_switch_single_left_straight"
+        android:contentDescription="Single switch diagram" />
+    -->
+
+</FrameLayout>

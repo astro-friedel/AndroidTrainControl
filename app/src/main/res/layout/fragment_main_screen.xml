@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:hapticFeedbackEnabled="false"
+        app:tabTextColor="@color/colorPrimary">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tacks_tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Tracks" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/switches_tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Switches" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/lights_tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Lights" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/bluetooth_tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Connections" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/panelBackground" />
+</LinearLayout>

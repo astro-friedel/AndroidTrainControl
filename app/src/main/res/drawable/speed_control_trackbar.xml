@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Custom track for the speed lever SeekBar.
+
+    background      — the unfilled portion of the track (dark)
+    secondaryProgress — unused but required by Android's layer-list for SeekBar
+    progress        — filled portion, amber, fills from bottom-to-top because
+                      the SeekBar is rotated 270°
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#202020"/>
+            <stroke android:width="1dp" android:color="#3D3D3D"/>
+            <corners android:radius="4dp"/>
+            <size android:height="8dp"/>
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <solid android:color="#303030"/>
+                <corners android:radius="4dp"/>
+                <size android:height="8dp"/>
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="#E07800"/>
+                <corners android:radius="4dp"/>
+                <size android:height="8dp"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>

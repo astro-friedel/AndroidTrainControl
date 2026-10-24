@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_switch_pair.xml
+    =========================
+    Diagram for a PAIRED crossover: two parallel main tracks with a
+    diagonal crossover between them.  The pair always throws together,
+    so one toggle governs both.
+
+    Track geometry (train travels UPWARD):
+    ───────────────────────────────────────
+      ┃    ┃       ← both mains exit at top
+      ┃   ╱┃
+      ┃  ╱ ┃       ← crossover diagonal (left→right, between mains only)
+      ┃ ╱  ┃
+      ┃╱   ┃
+      ┃    ┃       ← both mains enter at bottom
+
+    Rail conventions (gauge = 20dp):
+      • Left main:   full-height vertical pair               → GREEN
+      • Right main:  full-height vertical pair               → GREEN
+      • Crossover:   two parallel rails running diagonally
+                     from the left main (bottom frog) up to
+                     the right main (top frog), left → right.
+                     Both crossover rails stay between the two
+                     mains — they do not extend past either main.
+                                                             → YELLOW (dim)
+
+    Coordinate sketch:
+      Left  main rails  x = [lL, lR]   full height
+      Right main rails  x = [rL, rR]   full height   (lR < rL, gap between)
+      Bottom frog  (lR, frogBottomY)
+      Top    frog  (rL, frogTopY)
+      Crossover inner rail:  (lR, frogBottomY) → (rL, frogTopY)
+      Crossover outer rail:  20dp perpendicular offset toward the right
+        outer start = (lR + 20·cos θ,  frogBottomY + 20·sin θ)
+        outer end   = (rL + 20·cos θ,  frogTopY    + 20·sin θ)
+        where θ is the perpendicular angle to the crossover direction.
+
+    Colour convention (matches toggle):
+      STRAIGHT  (checked / green)   → both mains green, crossover dim yellow.
+      DIVERGING (unchecked / yellow) → crossover bright yellow, mains dim green.
+
+    Implementation: SwitchPairView draws both mains and the crossover.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.controls.train.app.switches.view.SwitchPairView
+        android:id="@+id/view_switch_pair"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Switch pair diagram"
+        app:switchThrown="false" />
+
+</FrameLayout>

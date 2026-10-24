@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_switch_y.xml
+    ======================
+    Diagram for a "Y" turnout.  Unlike a normal turnout, a Y-switch has
+    NO straight-through route — both legs diverge symmetrically from the
+    point, forming a "Y" shape.
+
+    Track geometry (vertical, point at top):
+    ─────────────────────────────────────────
+
+              │          ← single approach track (top)
+             ╱╲
+            ╱  ╲         ← point / frog
+           ╱    ╲
+          ╱      ╲
+         ╱        ╲
+        ╱          ╲
+       │            │    ← left leg         right leg (bottom)
+
+    Color convention:
+      STRAIGHT  (checked / green)  → LEFT  leg highlighted green
+                                     (operator convention: "normal" = left)
+      DIVERGING (unchecked / yellow)→ RIGHT leg highlighted yellow
+
+    If your layout uses the opposite convention (right = normal) just flip
+    which branch SwitchYView paints green vs yellow.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.controls.train.app.switches.view.SwitchYView
+        android:id="@+id/view_switch_y"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/y_switch_diagram"
+        app:switchThrown="false" />
+
+</FrameLayout>

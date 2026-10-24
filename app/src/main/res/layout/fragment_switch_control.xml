@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_switch_control.xml
+    ============================
+    One row/card in the Switches list.  Hosts:
+      1. Switch name text view (top)
+      2. Two-colour toggle  (green = straight, yellow = diverging)
+      3. A FrameLayout that the parent fragment swaps for one of:
+             fragment_switch_single.xml
+             fragment_switch_pair.xml
+             fragment_switch_y.xml
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@color/background"
+    android:elevation="2dp">
+
+    <!-- ① Switch name -->
+    <TextView
+        android:id="@+id/tv_switch_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Switch Name"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:gravity="center"
+        android:paddingBottom="8dp" />
+
+    <!-- ② Toggle + colour labels -->
+    <!--
+        The SwitchMaterial thumb uses a StateListDrawable in drawable/
+        bg_switch_track.xml (green / yellow) applied via app:trackTint.
+        If you prefer a plain Switch, swap SwitchMaterial for Switch and
+        remove the app: namespace attributes.
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/tv_label_straight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:paddingEnd="8dp"
+            android:text="STRAIGHT"
+            android:textColor="#2E7D32"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+        <!--
+            State: checked   = straight (green)
+            State: unchecked = diverging (yellow)
+            Java reads:  switchToggle.isChecked()
+        -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:contentDescription="Throw switch" />
+
+        <TextView
+            android:id="@+id/tv_label_diverging"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:paddingStart="8dp"
+            android:text="DIVERGING"
+            android:textColor="#F9A825"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+    </LinearLayout>
+
+    <!-- 3 Diagram placeholder -->
+    <!--
+        The hosting fragment calls:
+            getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.switch_diagram_container, diagramFragment)
+                .commit();
+        where diagramFragment is one of:
+            SwitchSingleFragment, SwitchPairFragment, SwitchYFragment
+        The diagram fragment receives the current toggle state via its
+        ViewModel or via setArguments() so it can colour its rails.
+    -->
+    <FrameLayout
+        android:id="@+id/switch_diagram_container"
+        android:layout_width="match_parent"
+        android:layout_height="120dp" />
+
+</LinearLayout>
